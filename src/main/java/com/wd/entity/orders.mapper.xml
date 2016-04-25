@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wd.dao.orders.mapper">
+	
+	<!-- 增加订单条目 -->
+	<insert id="addOrder" parameterType="Orders">
+		insert into orders(u_id,i_id,o_count,o_time)
+			values(#{u_id},#{i_id},#{o_count},#{o_time})
+	</insert>
+	
+	<!-- 根据用户id显示该用户订单的所有条目 -->
+	<select id="getUserOrders" parameterType="int" resultMap="OrdersResultMap">
+		select * from orders where u_id=#{u_id} order by o_time desc
+	</select>
+	<resultMap type="Orders" id="OrdersResultMap">
+		<collection property="items" ofType="Item" column="i_id" select="getItem"/>
+	</resultMap>
+	<select id="getItem" parameterType="int" resultType="Item">
+		select * from item where i_id=#{id}
+	</select>
+	
+</mapper>

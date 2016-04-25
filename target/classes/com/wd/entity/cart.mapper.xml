@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wd.dao.cart.mapper">
+	
+	<!-- 增加购物车条目 -->
+	<insert id="addCart" parameterType="Cart">
+		insert into cart(u_id,i_id,c_count,c_time)
+			values(#{u_id},#{i_id},#{c_count},#{c_time})
+	</insert>
+	
+	<!-- 删除购物车条目 -->
+	<delete id="deleteCart" parameterType="int">
+		delete from cart where c_id=#{c_id}
+	</delete>
+	
+	<!-- 根据用户id显示该用户购物车所有条目 -->
+	<select id="getCart" parameterType="int" resultMap="CartResultMap">
+		select * from cart where u_id=#{u_id} order by c_time desc
+	</select>
+	<resultMap type="Cart" id="CartResultMap">
+		<collection property="items" ofType="Item" column="i_id" select="getItem"/>
+	</resultMap>
+	<select id="getItem" parameterType="int" resultType="Item">
+		select * from item where i_id=#{id}
+	</select>
+</mapper>

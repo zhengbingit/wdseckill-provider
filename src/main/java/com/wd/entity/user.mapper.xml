@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wd.dao.user.mapper">
+	<!-- 用户注册 -->	
+	<insert id="addUser" parameterType="User">
+		insert into user(u_name,u_pwd,u_issell,u_store,u_money) 
+		values(#{u_name},#{u_pwd},#{u_issell},#{u_store},#{u_money})
+	</insert>
+
+	<!-- 更新账户余额 -->
+	<update id="updateUser" parameterType="User">
+         update user set u_money=#{u_money} where u_id=#{u_id}
+    </update>
+</mapper>

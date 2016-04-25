@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd 
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        ">
+	<!-- 配置注解 begin -->
+	<context:component-scan base-package="*"/>
+	<!-- 配置注解 end -->
+        
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+	<!-- <dubbo:application name="dubbo-test-serviceimpl" /> -->
+
+	<!-- 使用multicast广播注册中心暴露服务地址 -->
+	<!-- <dubbo:registry protocol="zookeeper" address="zookeeper://127.0.0.1:2181" /> -->
+
+	<!-- 用dubbo协议在20880端口暴露服务 -->
+	<!-- <dubbo:protocol name="dubbo" port="20881" /> -->
+
+	<!-- 声明需要暴露的服务接口 -->
+	<!-- <dubbo:service interface="Service.HelloService" ref="helloService" /> -->
+
+	<!-- 和本地bean一样实现服务 -->
+	<bean id="userService" class="com.wd.service.user.UserServiceImpl">
+		<property name="userDao" ref="userDao"/>
+	</bean>
+	<bean id="orderService" class="com.wd.service.order.OrderServiceImpl">
+		<property name="orderDao" ref="orderDao"/>
+	</bean>
+	<bean id="cartService" class="com.wd.service.cart.CartServiceImpl">
+		<property name="cartDao" ref="cartDao"/>
+	</bean>
+	<bean id="itemService" class="com.wd.service.items.ItemServiceImpl">
+		<property name="itemDao" ref="itemDao"/>
+	</bean>
+	
+	
+</beans>

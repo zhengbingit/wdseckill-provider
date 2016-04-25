@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wd.dao.item.mapper">
+	
+	<!-- 发布商品 -->	
+	<insert id="addItem" parameterType="Item">
+		insert into item(i_name,i_img1,i_img2,i_img3,i_price,i_stock,i_sales,
+			i_postage,i_content,i_iskill,i_killtime,i_time,u_id) 
+		values(#{i_name},#{i_img1},#{i_img2},#{i_img3},#{i_price},
+			#{i_stock},#{i_sales},#{i_postage},#{i_content},#{i_iskill},
+			#{i_killtime},#{i_time},#{u_id})
+	</insert>
+	
+	<!-- 删除商品 -->
+	<delete id="deleteItem" parameterType="int">
+		delete from item where i_id=#{i_id}		
+	</delete>
+	
+	<!-- 更新商品 -->
+	<update id="updateItem" parameterType="Item">
+		update item set i_name=#{i_name},i_img1=#{i_img1},i_img2=#{i_img2},
+			i_img3=#{i_img3},i_price=#{i_price},i_stock=#{i_stock},
+			i_sales=#{i_sales},i_postage=#{i_postage},
+			i_content=#{i_content},i_iskill=#{i_iskill},
+			i_killtime=#{i_killtime},i_time=#{i_time}
+			where i_id=#{i_id}
+	</update>
+	
+	<!-- 更新商品销量 -->
+	<update id="updateSales" parameterType="Item">
+		update item set i_sales=#{i_sales} where i_id=#{i_id}
+	</update>
+	
+	<!-- 更新商品库存 -->
+	<update id="updateStock" parameterType="Item">
+		update item set i_stock=#{i_stock} where i_id=#{i_id}
+	</update>
+	
+	<!-- 根据用户id获得该用户店铺的商品列表 -->
+	<select id="getUserItems" resultType="Item" parameterType="int">
+		select * from item where u_id=#{u_id} order by i_time desc
+	</select>
+	
+	<!-- 所有商品列表 -->
+	<select id="getItems" resultType="Item">
+		select * from item order by i_time desc
+	</select>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<package name="com.wd.entity"/>
+	</typeAliases>
+    <mappers>
+    	<!-- 所有mapper文件填写位置 -->
+    	<mapper resource="com/wd/entity/user.mapper.xml"/>
+    	<mapper resource="com/wd/entity/orders.mapper.xml"/>
+    	<mapper resource="com/wd/entity/cart.mapper.xml"/>
+    	<mapper resource="com/wd/entity/item.mapper.xml"/>
+    </mappers>
+</configuration>
