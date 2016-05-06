@@ -20,9 +20,16 @@
 		select * from cart where u_id=#{u_id} order by c_time desc
 	</select>
 	<resultMap type="Cart" id="CartResultMap">
-		<collection property="items" ofType="Item" column="i_id" select="getItem"/>
+		<association property="item" javaType="Item" column="i_id" select="getItem"/>
 	</resultMap>
-	<select id="getItem" parameterType="int" resultType="Item">
+	<select id="getItem" parameterType="int" resultMap="itemsUResultMap">
 		select * from item where i_id=#{id}
 	</select>
+	<resultMap type="Item" id="itemsUResultMap">
+		<association property="user" column="u_id" javaType="User" select="getUser"/>
+	</resultMap>
+	<select id="getUser" parameterType="int" resultType="User">
+		select * from user where u_id=#{id}
+	</select>
+	
 </mapper>

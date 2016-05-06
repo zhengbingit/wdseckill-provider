@@ -13,4 +13,9 @@
 	<update id="updateUser" parameterType="User">
          update user set u_money=#{u_money} where u_id=#{u_id}
     </update>
+    
+    <!-- 获得用户信息 -->
+    <select id="getUser" parameterType="String" resultType="User">
+    	select * from user where u_name=#{u_name}
+    </select>
 </mapper>

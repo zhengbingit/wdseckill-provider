@@ -16,12 +16,11 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements IUserDao,Serial
 	}
 	public boolean addUser(User user) {
 		super.getSqlSession().insert("com.wd.dao.user.mapper.addUser", user);
-		return false;
+		return true;
 	}
 
-	public User getUser(String username) {
-		System.out.println("Cache：getUser");
-		return null;
+	public User getUser(String u_name) {
+		return super.getSqlSession().selectOne("com.wd.dao.user.mapper.getUser", u_name);
 	}
 
 	public boolean isSell(int u_id) {

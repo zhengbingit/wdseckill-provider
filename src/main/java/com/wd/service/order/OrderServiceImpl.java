@@ -15,11 +15,7 @@ public class OrderServiceImpl implements IOrderService {
 	}
 
 	public boolean addOrdersService(Orders orders) {
-		if(orderDao.addOrders(orders)){
-			return true;
-		}else{
-			return false;
-		}
+		return orderDao.addOrders(orders) == true ? true : false;
 	}
 
 	public List<Orders> listOrdersService(int u_id) {

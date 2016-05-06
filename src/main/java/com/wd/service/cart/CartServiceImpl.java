@@ -15,11 +15,7 @@ public class CartServiceImpl implements ICartService {
 	}
 
 	public boolean addCart(Cart cart) {
-		if(cartDao.addCart(cart)) {
-			return true;
-		}else {
-			return false;
-		}
+		return cartDao.addCart(cart) == true ? true : false;
 	}
 
 	public List<Cart> listCart(int u_id) {

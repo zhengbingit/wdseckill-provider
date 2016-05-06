@@ -20,6 +20,6 @@ public interface IUserService {
 	 * @param user
 	 * @return
 	 */
-	public boolean loginService(User user);
+	public User loginService(User user);
 	
 }

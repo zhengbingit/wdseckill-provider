@@ -16,7 +16,7 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd
         ">
 	<!-- 配置注解 begin -->
-	<context:component-scan base-package="*"/>
+	<!-- <context:component-scan base-package="*"/> -->
 	<!-- 配置注解 end -->
         
 	<!-- 提供方应用信息，用于计算依赖关系 -->

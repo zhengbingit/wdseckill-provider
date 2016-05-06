@@ -1,6 +1,9 @@
 package Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -19,9 +22,15 @@ public class ItemTest {
 	@Resource IItemService itemService;
 	
 	@Test
+	public void testGetItem() {
+		int i_id = 1;
+		Item item = itemService.getItemService(i_id);
+		System.out.println(item);
+	}
+	
+	@Test
 	public void testAddItem() {
 		Item item = new Item();
-		
 		itemService.addItemService(item);
 	}
 	
@@ -53,6 +62,24 @@ public class ItemTest {
 		for(Item item : list_item) {
 			System.out.println(item);
 		}
+	}
+	
+	@Test
+	public void testTime() throws ParseException {
+		int i_id = 2;
+		//商品原有日期
+		Item item = itemService.getItemService(i_id);
+		//日期格式化
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		//系统当前日期
+		Date date = new Date();//获得系统时间.
+		System.out.println(sdf.format(date));
+		//输入自定义时间
+		String diyTime = "1995-10-29 11:00:12";
+		Date date1 = sdf.parse(diyTime);
+        item.setI_time(date1);
+        //修改商品发布时间
+		itemService.editItemService(item);
 	}
 	
 }

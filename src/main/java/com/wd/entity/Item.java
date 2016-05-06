@@ -1,9 +1,12 @@
 package com.wd.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Item {
+public class Item implements Serializable{
 
+	private static final long serialVersionUID = -6186112737566104327L;
+	
 	private int i_id;
 	private String i_name;
 	private String i_img1;
@@ -18,6 +21,8 @@ public class Item {
 	private Date i_killtime;
 	private Date i_time;
 	private int u_id;
+	private User user;
+	private String surplustime;
 	
 	public int getI_id() {
 		return i_id;
@@ -103,15 +108,32 @@ public class Item {
 	public void setU_id(int u_id) {
 		this.u_id = u_id;
 	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public String getSurplustime() {
+		return surplustime;
+	}
+	public void setSurplustime(String surplustime) {
+		this.surplustime = surplustime;
+	}
 	@Override
 	public String toString() {
 		return "Item [i_id=" + i_id + ", i_name=" + i_name + ", i_img1=" + i_img1 + ", i_img2=" + i_img2 + ", i_img3="
 				+ i_img3 + ", i_price=" + i_price + ", i_stock=" + i_stock + ", i_sales=" + i_sales + ", i_postage="
 				+ i_postage + ", i_content=" + i_content + ", i_iskill=" + i_iskill + ", i_killtime=" + i_killtime
-				+ ", i_time=" + i_time + ", u_id=" + u_id + "]";
+				+ ", i_time=" + i_time + ", u_id=" + u_id + ", user=" + user + ", surplustime=" + surplustime + "]";
+	}
+	public Item() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	public Item(int i_id, String i_name, String i_img1, String i_img2, String i_img3, double i_price, int i_stock,
-			int i_sales, double i_postage, String i_content, int i_iskill, Date i_killtime, Date i_time, int u_id) {
+			int i_sales, double i_postage, String i_content, int i_iskill, Date i_killtime, Date i_time, int u_id,
+			User user, String surplustime) {
 		super();
 		this.i_id = i_id;
 		this.i_name = i_name;
@@ -127,10 +149,7 @@ public class Item {
 		this.i_killtime = i_killtime;
 		this.i_time = i_time;
 		this.u_id = u_id;
+		this.user = user;
+		this.surplustime = surplustime;
 	}
-	public Item() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
 }

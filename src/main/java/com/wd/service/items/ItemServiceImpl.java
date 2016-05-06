@@ -37,5 +37,9 @@ public class ItemServiceImpl implements IItemService {
 	public List<Item> listStoreItemsService(int u_id) {
 		return itemDao.listStoreItems(u_id);
 	}
+	
+	public List<Item> listItemsNoLoginService() {
+		return itemDao.listItemsNoLogin();
+	}
 
 }

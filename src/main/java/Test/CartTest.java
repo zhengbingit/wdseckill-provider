@@ -1,6 +1,7 @@
 package Test;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -34,6 +35,19 @@ public class CartTest {
 		for(Cart cart : list_cart) {
 			System.out.println(cart);
 		}
+	}
+	
+	@Test
+	public void testTime() {
+		Date date = new Date();
+		List<Cart> list_cart = cartService.listCart(2);
+        Date date2 = list_cart.get(0).getItem().getI_killtime();
+        
+        long temp = date2.getTime() - date.getTime();    //相差毫秒数
+        long hours = temp / 1000 / 3600;                //相差小时数
+        long temp2 = temp % (1000 * 3600);
+        long mins = temp2 / 1000 / 60;                    //相差分钟数
+        System.out.println("date2 与 date 相差" + hours + "小时"+ mins + "分钟");
 	}
 	
 }

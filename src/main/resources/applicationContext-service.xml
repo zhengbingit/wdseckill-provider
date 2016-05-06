@@ -16,20 +16,23 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd
         ">
 	<!-- 配置注解 begin -->
-	<context:component-scan base-package="*"/>
+	<!-- <context:component-scan base-package="*"/> -->
 	<!-- 配置注解 end -->
         
 	<!-- 提供方应用信息，用于计算依赖关系 -->
-	<!-- <dubbo:application name="dubbo-test-serviceimpl" /> -->
+	<dubbo:application name="dubbo-wd-serviceimpl" />
 
 	<!-- 使用multicast广播注册中心暴露服务地址 -->
-	<!-- <dubbo:registry protocol="zookeeper" address="zookeeper://127.0.0.1:2181" /> -->
+	<dubbo:registry protocol="zookeeper" address="zookeeper://127.0.0.1:2181" />
 
 	<!-- 用dubbo协议在20880端口暴露服务 -->
-	<!-- <dubbo:protocol name="dubbo" port="20881" /> -->
+	<dubbo:protocol name="dubbo" port="20880" />
 
 	<!-- 声明需要暴露的服务接口 -->
-	<!-- <dubbo:service interface="Service.HelloService" ref="helloService" /> -->
+	<dubbo:service interface="com.wd.service.user.IUserService" ref="userService"/>
+	<dubbo:service interface="com.wd.service.order.IOrderService" ref="orderService"/>
+	<dubbo:service interface="com.wd.service.cart.ICartService" ref="cartService"/>
+	<dubbo:service interface="com.wd.service.items.IItemService" ref="itemService"/>
 
 	<!-- 和本地bean一样实现服务 -->
 	<bean id="userService" class="com.wd.service.user.UserServiceImpl">
@@ -44,6 +47,5 @@
 	<bean id="itemService" class="com.wd.service.items.ItemServiceImpl">
 		<property name="itemDao" ref="itemDao"/>
 	</bean>
-	
 	
 </beans>

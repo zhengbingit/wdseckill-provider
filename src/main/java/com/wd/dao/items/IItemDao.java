@@ -44,6 +44,12 @@ public interface IItemDao {
 	public List<Item> listItems();
 	
 	/**
+	 * 获得商品列表（未登录）（按时间倒排）
+	 * @return
+	 */
+	public List<Item> listItemsNoLogin();
+	
+	/**
 	 * 根据用户id获得该卖家店铺的商品列表
 	 * @param u_id
 	 * @return ArrayList

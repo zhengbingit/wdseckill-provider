@@ -15,10 +15,17 @@
 		select * from orders where u_id=#{u_id} order by o_time desc
 	</select>
 	<resultMap type="Orders" id="OrdersResultMap">
-		<collection property="items" ofType="Item" column="i_id" select="getItem"/>
+		<association property="item" javaType="Item" column="i_id" select="getItem"/>
 	</resultMap>
-	<select id="getItem" parameterType="int" resultType="Item">
+	<select id="getItem" parameterType="int" resultMap="itemsUResultMap">
 		select * from item where i_id=#{id}
+	</select>
+	<resultMap type="Item" id="itemsUResultMap">
+		<id property="i_id" column="i_id"/>
+		<association property="user" column="u_id" javaType="User" select="getUser"/>
+	</resultMap>
+	<select id="getUser" parameterType="int" resultType="User">
+		select u_store,u_id from user where u_id=#{id}
 	</select>
 	
 </mapper>

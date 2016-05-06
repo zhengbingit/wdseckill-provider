@@ -22,6 +22,7 @@ public class ItemDaoImpl extends SqlSessionDaoSupport implements IItemDao {
 			super.getSqlSession().delete("com.wd.dao.item.mapper.deleteItem", i_id);
 			return true;
 		}catch(Exception e){
+			System.out.println(e);
 			return false;
 		}
 	}
@@ -31,18 +32,18 @@ public class ItemDaoImpl extends SqlSessionDaoSupport implements IItemDao {
 			super.getSqlSession().update("com.wd.dao.item.mapper.updateItem", item);
 			return true;
 		}catch(Exception e){
+			System.out.println(e);
 			return false;
 		}
 	}
 
 	public Item getItem(int i_id) {
-		System.out.println("Cache");
-		return null;
+//		System.out.println("Cache");
+		return super.getSqlSession().selectOne("com.wd.dao.item.mapper.getItem", i_id);
 	}
 
 	public List<Item> listItems() {
-		System.out.println("Cache");
-		return null;
+		return super.getSqlSession().selectList("com.wd.dao.item.mapper.getItemsU");
 	}
 
 	public List<Item> listStoreItems(int u_id) {
@@ -86,6 +87,10 @@ public class ItemDaoImpl extends SqlSessionDaoSupport implements IItemDao {
 		}catch(Exception e){
 			return false;
 		}
+	}
+
+	public List<Item> listItemsNoLogin() {
+		return super.getSqlSession().selectList("com.wd.dao.item.mapper.getItemsU");
 	}
 
 }

@@ -1,16 +1,18 @@
 package com.wd.entity;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
-public class Cart {
+public class Cart implements Serializable{
+	
+	private static final long serialVersionUID = -7822141839538708126L;
 	
 	private int c_id;
 	private int u_id;
 	private int i_id;
 	private int c_count;
 	private Date c_time;
-	private List<Item> items;
+	private Item item;
 	
 	public int getC_id() {
 		return c_id;
@@ -36,11 +38,9 @@ public class Cart {
 	public void setC_count(int c_count) {
 		this.c_count = c_count;
 	}
-	public List<Item> getItems() {
-		return items;
-	}
-	public void setItems(List<Item> items) {
-		this.items = items;
+	public Cart() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	public Date getC_time() {
 		return c_time;
@@ -48,23 +48,25 @@ public class Cart {
 	public void setC_time(Date c_time) {
 		this.c_time = c_time;
 	}
-	public Cart() {
-		super();
-		// TODO Auto-generated constructor stub
+	public Item getItem() {
+		return item;
 	}
-	public Cart(int c_id, int u_id, int i_id, int c_count, Date c_time, List<Item> items) {
+	public void setItem(Item item) {
+		this.item = item;
+	}
+	public Cart(int c_id, int u_id, int i_id, int c_count, Date c_time, Item item) {
 		super();
 		this.c_id = c_id;
 		this.u_id = u_id;
 		this.i_id = i_id;
 		this.c_count = c_count;
 		this.c_time = c_time;
-		this.items = items;
+		this.item = item;
 	}
 	@Override
 	public String toString() {
 		return "Cart [c_id=" + c_id + ", u_id=" + u_id + ", i_id=" + i_id + ", c_count=" + c_count + ", c_time="
-				+ c_time + ", items=" + items + "]";
+				+ c_time + ", item=" + item + "]";
 	}
-
+	
 }

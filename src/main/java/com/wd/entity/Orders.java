@@ -1,31 +1,19 @@
 package com.wd.entity;
 
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
-public class Orders {
+public class Orders implements Serializable{
+	
+	private static final long serialVersionUID = 7682986141400387777L;
 	
 	private int o_id;
 	private int u_id;
 	private int i_id;
 	private int o_count;
 	private Date o_time;
-	private List<Item> items;
+	private Item item;
 	
-	public Orders(int o_id, int u_id, int i_id, int o_count, Date o_time, List<Item> items) {
-		super();
-		this.o_id = o_id;
-		this.u_id = u_id;
-		this.i_id = i_id;
-		this.o_count = o_count;
-		this.o_time = o_time;
-		this.items = items;
-	}
-	@Override
-	public String toString() {
-		return "Orders [o_id=" + o_id + ", u_id=" + u_id + ", i_id=" + i_id + ", o_count=" + o_count + ", o_time="
-				+ o_time + ", items=" + items + "]";
-	}
 	public int getO_id() {
 		return o_id;
 	}
@@ -56,14 +44,29 @@ public class Orders {
 	public void setO_time(Date o_time) {
 		this.o_time = o_time;
 	}
-	public List<Item> getItems() {
-		return items;
+	public Item getItem() {
+		return item;
 	}
-	public void setItems(List<Item> items) {
-		this.items = items;
+	public void setItem(Item item) {
+		this.item = item;
+	}
+	@Override
+	public String toString() {
+		return "Orders [o_id=" + o_id + ", u_id=" + u_id + ", i_id=" + i_id + ", o_count=" + o_count + ", o_time="
+				+ o_time + ", item=" + item + "]";
+	}
+	public Orders(int o_id, int u_id, int i_id, int o_count, Date o_time, Item item) {
+		super();
+		this.o_id = o_id;
+		this.u_id = u_id;
+		this.i_id = i_id;
+		this.o_count = o_count;
+		this.o_time = o_time;
+		this.item = item;
 	}
 	public Orders() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 }

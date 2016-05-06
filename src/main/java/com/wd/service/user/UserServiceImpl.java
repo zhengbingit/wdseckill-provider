@@ -18,9 +18,18 @@ public class UserServiceImpl implements IUserService {
 		return true;
 	}
 
-	public boolean loginService(User user) {
-		// TODO Auto-generated method stub
-		return false;
+	public User loginService(User user) {
+		User u = userDao.getUser(user.getU_name());
+		if(u != null){
+			if(u.getU_pwd().equals(user.getU_pwd())) {
+				return u;
+			}else {
+				return null;
+			}
+		}else {
+			return null;
+		}
 	}
+
 
 }

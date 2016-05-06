@@ -16,7 +16,7 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd
         ">
 	<!-- 配置注解 begin -->
-	<context:component-scan base-package="*"/>
+	<!-- <context:component-scan base-package="*"/> -->
 	<!-- 配置注解 end -->
         
 	<!-- 配置datasource begin -->
@@ -70,18 +70,5 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut" />
 	</aop:config>
 	<!-- 配置事物 声明式事物 end -->
-
-
-	<!-- 提供方应用信息，用于计算依赖关系 -->
-	<!-- <dubbo:application name="dubbo-test-serviceimpl" /> -->
-
-	<!-- 使用multicast广播注册中心暴露服务地址 -->
-	<!-- <dubbo:registry protocol="zookeeper" address="zookeeper://127.0.0.1:2181" /> -->
-
-	<!-- 用dubbo协议在20880端口暴露服务 -->
-	<!-- <dubbo:protocol name="dubbo" port="20881" /> -->
-
-	<!-- 声明需要暴露的服务接口 -->
-	<!-- <dubbo:service interface="Service.HelloService" ref="helloService" /> -->
 
 </beans>

@@ -30,6 +30,7 @@ public class OrderDaoImpl extends SqlSessionDaoSupport implements IOrderDao {
 			list = super.getSqlSession().selectList("com.wd.dao.orders.mapper.getUserOrders", u_id);
 			return list;
 		}catch(Exception e){
+			System.out.println(e);
 			return null;
 		}
 	}
