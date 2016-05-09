@@ -33,7 +33,8 @@
 	<dubbo:service interface="com.wd.service.order.IOrderService" ref="orderService"/>
 	<dubbo:service interface="com.wd.service.cart.ICartService" ref="cartService"/>
 	<dubbo:service interface="com.wd.service.items.IItemService" ref="itemService"/>
-
+	<dubbo:service interface="com.wd.service.pay.IPayService" ref="payService"/>
+	
 	<!-- 和本地bean一样实现服务 -->
 	<bean id="userService" class="com.wd.service.user.UserServiceImpl">
 		<property name="userDao" ref="userDao"/>
@@ -45,6 +46,12 @@
 		<property name="cartDao" ref="cartDao"/>
 	</bean>
 	<bean id="itemService" class="com.wd.service.items.ItemServiceImpl">
+		<property name="itemDao" ref="itemDao"/>
+	</bean>
+	<bean id="payService" class="com.wd.service.pay.PayServiceImpl">
+		<property name="userDao" ref="userDao"/>
+		<property name="orderDao" ref="orderDao"/>
+		<property name="cartDao" ref="cartDao"/>
 		<property name="itemDao" ref="itemDao"/>
 	</bean>
 	

@@ -32,14 +32,14 @@
 			where i_id=#{i_id}
 	</update>
 	
-	<!-- 更新商品销量 -->
-	<update id="updateSales" parameterType="Item">
-		update item set i_sales=#{i_sales} where i_id=#{i_id}
+	<!-- 增加商品销量 -->
+	<update id="updateSales" parameterType="java.util.Map">
+		update item set i_sales=i_sales+#{i_sales} where i_id=#{i_id}
 	</update>
 	
-	<!-- 更新商品库存 -->
-	<update id="updateStock" parameterType="Item">
-		update item set i_stock=#{i_stock} where i_id=#{i_id}
+	<!-- 减少商品库存 -->
+	<update id="updateStock" parameterType="java.util.Map">
+		update item set i_stock=i_stock-#{i_stock} where i_id=#{i_id}
 	</update>
 	
 	<!-- 根据用户id获得该用户店铺的商品列表 -->

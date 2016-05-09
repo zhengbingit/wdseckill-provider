@@ -25,4 +25,17 @@ public class UserTest {
 		userService.addUserService(user);
 	}
 	
+	@Test
+	public void testEditUserMoney() {
+		int u_id = 2;
+		int u_money = 100;
+		System.out.println(userService.editUserMoneyService(u_id, u_money));
+	}
+	
+	@Test
+	public void testGetMoney() {
+		int u_id = 2;
+		System.out.println(userService.getUserMoneyService(u_id));
+	}
+	
 }

@@ -71,7 +71,7 @@ public interface IItemDao {
 	public int getStock(int i_id);
 	
 	/**
-	 * 根据商品id更新该商品销量
+	 * 根据商品id增加该商品销量sales个
 	 * @param i_id
 	 * @param sales
 	 * @return boolean
@@ -79,7 +79,7 @@ public interface IItemDao {
 	public boolean editItemSales(int i_id, int sales);
 	
 	/**
-	 * 根据商品id更新该商品库存
+	 * 根据商品id减少该商品库存stock个
 	 * @param i_id
 	 * @param stock
 	 * @return boolean

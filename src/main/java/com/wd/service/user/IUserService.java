@@ -21,5 +21,14 @@ public interface IUserService {
 	 * @return
 	 */
 	public User loginService(User user);
-	
+
+	/**
+	 * 根据u_id减少用户余额
+	 * @param u_id
+	 * @param u_money
+	 * @return
+	 */
+	public boolean editUserMoneyService(int u_id, double u_money);
+
+	public double getUserMoneyService(int u_id);
 }

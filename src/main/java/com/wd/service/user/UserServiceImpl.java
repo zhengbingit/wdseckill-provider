@@ -14,8 +14,7 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	public boolean addUserService(User user) {
-		userDao.addUser(user);
-		return true;
+		return userDao.addUser(user) == true ? true : false;
 	}
 
 	public User loginService(User user) {
@@ -29,6 +28,14 @@ public class UserServiceImpl implements IUserService {
 		}else {
 			return null;
 		}
+	}
+
+	public boolean editUserMoneyService(int u_id, double u_money) {
+		return userDao.updateMoney(u_id, u_money);
+	}
+
+	public double getUserMoneyService(int u_id) {
+		return userDao.getMoney(u_id);
 	}
 
 

@@ -32,4 +32,9 @@
 		select * from user where u_id=#{id}
 	</select>
 	
+	<!-- 根据购物车id获得该购物车条目的详细信息 -->
+	<select id="getOneCart" parameterType="int" resultMap="CartResultMap">
+		select * from cart where c_id=#{c_id}
+	</select>
+	
 </mapper>

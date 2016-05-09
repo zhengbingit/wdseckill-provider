@@ -44,10 +44,10 @@ public interface IUserDao {
 	public double getMoney(int u_id);
 	
 	/**
-	 * 根据用户id更新某用户的余额
+	 * 根据用户id减少某用户的余额
 	 * @param money
 	 * @return boolean
 	 */
-	public boolean updateMoney(int u_id, double money);
+	public boolean updateMoney(int u_id, double u_money);
 	
 }

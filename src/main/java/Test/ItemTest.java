@@ -3,6 +3,7 @@ package Test;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +21,20 @@ import com.wd.service.items.IItemService;
 @ContextConfiguration({"classpath*:applicationContext-*.xml"})
 public class ItemTest {
 	@Resource IItemService itemService;
+	
+	@Test
+	public void testEditItemSales() {
+		int i_id = 2;
+		int sales = 3;
+		System.out.println(itemService.editItemSalesService(i_id, sales));
+	}
+	
+	@Test
+	public void testEditItemStock() {
+		int i_id = 2;
+		int stock = 3;
+		System.out.println(itemService.editItemStockService(i_id, stock));
+	}
 	
 	@Test
 	public void testGetItem() {
@@ -81,5 +96,13 @@ public class ItemTest {
         //修改商品发布时间
 		itemService.editItemService(item);
 	}
-	
+	@Test
+	public void compareTime() {
+		int i_id = 7;
+		//商品原有日期
+		Item item = itemService.getItemService(i_id);
+		Date i_time = item.getI_killtime();
+		Date n_time = new Date();
+		System.out.println(i_time.before(n_time));
+	}
 }

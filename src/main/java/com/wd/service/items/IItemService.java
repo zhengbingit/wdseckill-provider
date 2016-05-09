@@ -10,6 +10,16 @@ import com.wd.entity.Item;
  */
 public interface IItemService {
 	
+	public boolean editItemStockService(int i_id, int stock);
+	
+	/**
+	 * 增加商品的销量
+	 * @param i_id
+	 * @param sales
+	 * @return
+	 */
+	public boolean editItemSalesService(int i_id, int sales);
+		
 	/**
 	 * 商铺发布商品
 	 * @param item
@@ -32,7 +42,7 @@ public interface IItemService {
 	public boolean editItemService(Item item);
 	
 	/**
-	 * 根据用户id获得商品详情
+	 * 根据商品id获得商品详情
 	 * @param i_id
 	 * @return
 	 */

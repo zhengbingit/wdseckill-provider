@@ -2,55 +2,28 @@ package com.wd.service.pay;
 
 public interface IPayService {
 	
-	/**
-	 * 查询账户余额
-	 * @param u_id
-	 * @return
-	 */
-	public double getMoneyService(int u_id);
 	
 	/**
-	 * 根据用户id更新该账户余额
-	 * @param money
+	 * 下单测试，仅针对单个商品下单
+	 *	操作：
+		 *	减库存
+		 *	增销量
+		 *	减余额
+		 *	增订单
+	 *	判断：
+		 *	判库存
+		 *	判余额
+		 *	判是否开抢
+	 * @param buyer_id
+	 * @param item_id
+	 * @param quantity
 	 * @return
 	 */
-	public boolean updateMoneyService(int u_id, double money);
+	public int payOneService(int buyer_id, int item_id, int quantity);
 	
 	/**
-	 * 根据商品id获得获得该商品的销量
-	 * @param i_id
+	 * 通过购物车购买
 	 * @return
 	 */
-	public int getSalesService(int i_id);
-	
-	/**
-	 * 根据商品id获得该商品的库存
-	 * @param i_id
-	 * @return
-	 */
-	public int getStockService(int u_id);
-	
-	/**
-	 * 根据商品id更新该商品的销量
-	 * @param i_id
-	 * @param sales
-	 * @return
-	 */
-	public boolean editItemSalesService(int i_id, int sales);
-	
-	/**
-	 * 根据商品id更新该商品的库存
-	 * @param i_id
-	 * @param stock
-	 * @return
-	 */
-	public boolean editItemStockService(int i_id, int stock);
-	
-	/**
-	 * 根据购物车id删除该购物车条目
-	 * @param c_id
-	 * @return
-	 */
-	public boolean deleteCartService(int c_id);
-	
+	public int payListService(int[] c_id, int u_id);
 }

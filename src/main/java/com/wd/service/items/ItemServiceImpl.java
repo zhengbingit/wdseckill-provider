@@ -42,4 +42,12 @@ public class ItemServiceImpl implements IItemService {
 		return itemDao.listItemsNoLogin();
 	}
 
+	public boolean editItemSalesService(int i_id, int sales) {
+		return itemDao.editItemSales(i_id, sales);
+	}
+
+	public boolean editItemStockService(int i_id, int stock) {
+		return itemDao.editItemStock(i_id, stock);
+	}
+
 }

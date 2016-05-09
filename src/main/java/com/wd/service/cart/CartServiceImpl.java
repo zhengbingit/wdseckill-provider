@@ -22,4 +22,12 @@ public class CartServiceImpl implements ICartService {
 		return cartDao.listCart(u_id);
 	}
 
+	public Cart getCart(int c_id) {
+		return cartDao.getCart(c_id);
+	}
+
+	public boolean deleteCart(int c_id) {
+		return cartDao.deleteCart(c_id);
+	}
+
 }

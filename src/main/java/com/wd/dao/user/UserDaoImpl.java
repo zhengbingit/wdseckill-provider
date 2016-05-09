@@ -1,6 +1,8 @@
 package com.wd.dao.user;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
@@ -34,16 +36,20 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements IUserDao,Serial
 	}
 
 	public double getMoney(int u_id) {
-		System.out.println("Cache: getMoney");
-		return 0;
+		return super.getSqlSession().selectOne("com.wd.dao.user.mapper.getMoney", u_id);
 	}
 
-	public boolean updateMoney(int u_id, double money) {
-		User u = new User();
-		u.setU_id(u_id);
-		u.setU_money(money);
-		super.getSqlSession().update("com.wd.dao.user.mapper.updateUser", u);
-		return false;
+	public boolean updateMoney(int u_id, double u_money) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("u_id", u_id);
+		map.put("u_money", u_money);
+		try{ 
+			super.getSqlSession().update("com.wd.dao.user.mapper.updateUser", map);
+			return true;
+		}catch(Exception e) {
+			System.out.println(e);
+			return false;
+		}
 	}
 
 }

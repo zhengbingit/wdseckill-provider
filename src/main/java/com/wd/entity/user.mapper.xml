@@ -9,13 +9,19 @@
 		values(#{u_name},#{u_pwd},#{u_issell},#{u_store},#{u_money})
 	</insert>
 
-	<!-- 更新账户余额 -->
-	<update id="updateUser" parameterType="User">
-         update user set u_money=#{u_money} where u_id=#{u_id}
+	<!-- 减少账户余额 -->
+	<update id="updateUser" parameterType="java.util.Map">
+         update user set u_money=u_money-#{u_money} where u_id=#{u_id}
     </update>
     
     <!-- 获得用户信息 -->
     <select id="getUser" parameterType="String" resultType="User">
     	select * from user where u_name=#{u_name}
     </select>
+    
+    <!-- 获得账户余额 -->
+    <select id="getMoney" parameterType="int" resultType="double">
+    	select u_money from user where u_id=#{u_id}
+    </select>
+    
 </mapper>

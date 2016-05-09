@@ -50,4 +50,11 @@ public class CartTest {
         System.out.println("date2 与 date 相差" + hours + "小时"+ mins + "分钟");
 	}
 	
+	@Test
+	public void testGetCart() {
+		int c_id = 2;
+		Cart cart = cartService.getCart(c_id);
+		System.out.println(cart);
+	}
+	
 }

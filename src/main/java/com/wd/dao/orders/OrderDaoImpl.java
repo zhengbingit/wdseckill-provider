@@ -20,6 +20,7 @@ public class OrderDaoImpl extends SqlSessionDaoSupport implements IOrderDao {
 			super.getSqlSession().insert("com.wd.dao.orders.mapper.addOrder", orders);
 			return true;
 		}catch(Exception e){
+			System.out.println(e);
 			return false;
 		}
 	}

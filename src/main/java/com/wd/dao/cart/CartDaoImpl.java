@@ -28,6 +28,7 @@ public class CartDaoImpl extends SqlSessionDaoSupport implements ICartDao {
 			super.getSqlSession().update("com.wd.dao.cart.mapper.deleteCart", c_id);
 			return true;
 		}catch(Exception e){
+			System.out.println(e);
 			return false;
 		}
 	}
@@ -39,6 +40,10 @@ public class CartDaoImpl extends SqlSessionDaoSupport implements ICartDao {
 		}catch(Exception e){
 			return null;
 		}
+	}
+
+	public Cart getCart(int c_id) {
+		return super.getSqlSession().selectOne("com.wd.dao.cart.mapper.getOneCart",c_id);
 	}
 
 }

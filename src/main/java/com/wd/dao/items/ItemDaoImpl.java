@@ -1,6 +1,8 @@
 package com.wd.dao.items;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
@@ -38,7 +40,6 @@ public class ItemDaoImpl extends SqlSessionDaoSupport implements IItemDao {
 	}
 
 	public Item getItem(int i_id) {
-//		System.out.println("Cache");
 		return super.getSqlSession().selectOne("com.wd.dao.item.mapper.getItem", i_id);
 	}
 
@@ -66,11 +67,11 @@ public class ItemDaoImpl extends SqlSessionDaoSupport implements IItemDao {
 	}
 
 	public boolean editItemSales(int i_id, int i_sales) {
-		Item item = new Item();
-		item.setI_id(i_id);
-		item.setI_sales(i_sales);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("i_id", i_id);
+		map.put("i_sales", i_sales);
 		try{
-			super.getSqlSession().update("com.wd.dao.item.mapper.updateSales", item);
+			super.getSqlSession().update("com.wd.dao.item.mapper.updateSales", map);
 			return true;
 		}catch(Exception e) {
 			return false;
@@ -78,11 +79,11 @@ public class ItemDaoImpl extends SqlSessionDaoSupport implements IItemDao {
 	}
 
 	public boolean editItemStock(int i_id, int i_stock) {
-		Item item = new Item();
-		item.setI_id(i_id);
-		item.setI_stock(i_stock);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("i_id", i_id);
+		map.put("i_stock", i_stock);
 		try{
-			super.getSqlSession().update("com.wd.dao.item.mapper.updateStock", item);
+			super.getSqlSession().update("com.wd.dao.item.mapper.updateStock", map);
 			return true;
 		}catch(Exception e){
 			return false;
