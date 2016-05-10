@@ -1,7 +1,13 @@
-<?xml version="1.0" encoding="GBK" ?>    
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-	<!-- Êä³öÈÕÖ¾µ½¿ØÖÆÌ¨ ConsoleAppender -->
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p %d{MM-dd HH:mm:ss,SSS} %m (%F:%L) \n" />
+		</layout>
+	</appender>
+	
+	<!-- è¾“å‡ºæ—¥å¿—åˆ°æŽ§åˆ¶å° ConsoleAppender -->
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<param name="Threshold" value="info"></param>
 		<layout class="org.apache.log4j.TTCCLayout">
@@ -9,7 +15,7 @@
 		</layout>
 	</appender>
 
-	<!-- Êä³öÈÕÖ¾µ½ÎÄ¼þ Ã¿ÌìÒ»¸öÎÄ¼þ -->
+	<!-- è¾“å‡ºæ—¥å¿—åˆ°æ–‡ä»¶ æ¯å¤©ä¸€ä¸ªæ–‡ä»¶ -->
 	<appender name="dailyRollingFile" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="Threshold" value="info"></param>
 		<param name="ImmediateFlush" value="true"></param>
@@ -20,7 +26,7 @@
 		</layout>
 	</appender>
 
-	<!-- Êä³öÈÕÖ¾µ½ÎÄ¼þ ÎÄ¼þ´óÐ¡µ½´ïÖ¸¶¨³ß´çµÄÊ±ºò²úÉúÒ»¸öÐÂµÄÎÄ¼þ -->
+	<!-- è¾“å‡ºæ—¥å¿—åˆ°æ–‡ä»¶ æ–‡ä»¶å¤§å°åˆ°è¾¾æŒ‡å®šå°ºå¯¸çš„æ—¶å€™äº§ç”Ÿä¸€ä¸ªæ–°çš„æ–‡ä»¶ -->
 	<appender name="railyFile" class="org.apache.log4j.RollingFileAppender">
 		<param name="File" value="c:/logs/railyFile.log"></param>
 		<param name="ImmediateFlush" value="true" />
@@ -33,7 +39,7 @@
 		</layout>
 	</appender>
 
-	<!-- Êä³öÈÕÖ¾µ½ÎÄ¼þ -->
+	<!-- è¾“å‡ºæ—¥å¿—åˆ°æ–‡ä»¶ -->
 	<appender name="file" class="org.apache.log4j.FileAppender">
 		<!-- <param name="File" value="c:/logs/file.log"></param> -->
 		<param name="Threshold" value="info"></param>
@@ -52,14 +58,21 @@
 		<priority value="info" />
 		<appender-ref ref="dubboAppender" />
 	</logger>
-	<!-- ¶¨ÒåÈ«¾ÖµÄÈÕÖ¾Êä³ö¼¶±ð,µ«ÊÇÔÚÊä³öÄ¿µÄµØµÄÅäÖÃÖÐÅäÖÃµÄ¾ßÌåÊä³ö¼¶±ðÓÅÏÈ¼¶¸ßÓÚÈ«¾Ö¶¨ÒåµÄÓÅÏÈ¼¶¡£ Èç¹ûÔÚrailyFileÖÐ¶¨Òå<param 
-		name="Threshold" value="info"></param>£¬ÄÇÃ´½«»á°ÑinfoÒÔÉÏ¼¶±ðµÄÐÅÏ¢Êä³ö -->
+	
+	<logger name="java.sql">
+		<level value="debug" />
+	</logger>
+	<logger name="org.apache.ibatis">
+		<level value="debug" />
+	</logger>
+	
 	<root>
+		<!-- <level value="debug" /> -->
 		<priority value="debug" />
+		<!-- <appender-ref ref="STDOUT" /> -->
 		<appender-ref ref="console" />
 		<appender-ref ref="dailyRollingFile" />
 		<appender-ref ref="railyFile" />
 		<appender-ref ref="file" />
 	</root>
-
-</log4j:configuration>  
+</log4j:configuration>

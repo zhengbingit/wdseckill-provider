@@ -13,7 +13,6 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.github.pagehelper.PageHelper;
 import com.wd.entity.Item;
 import com.wd.entity.Pages;
 import com.wd.service.items.IItemService;
@@ -65,7 +64,7 @@ public class ItemTest {
 	
 	@Test
 	public void testListItems() {
-		int pageNum = 2;
+		int pageNum = 1;
 		int pageSize = 2;
 		Pages pages = itemService.listItemsService(pageNum, pageSize);
 		List<Item> list_item = (ArrayList<Item>)pages.getList();
@@ -77,9 +76,12 @@ public class ItemTest {
 	
 	@Test
 	public void testListStoreItems() {
-		PageHelper.startPage(1, 1);
+		int pageNum = 1;
+		int pageSize = 2;
 		int u_id = 2;
-		List<Item> list_item = itemService.listStoreItemsService(u_id);
+		Pages pages = itemService.listStoreItemsService(pageNum, pageSize, u_id);
+		List<Item> list_item = (ArrayList<Item>)pages.getList();
+		System.out.println(pages.getPages());
 		for(Item item : list_item) {
 			System.out.println(item);
 		}

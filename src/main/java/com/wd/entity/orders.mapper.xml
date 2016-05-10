@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wd.dao.orders.mapper">
-	
+	<cache eviction="LRU" type="com.wd.cache.RedisCache"/>
 	<!-- 增加订单条目 -->
 	<insert id="addOrder" parameterType="Orders">
 		insert into orders(u_id,i_id,o_count,o_time)

@@ -38,4 +38,9 @@ public class UserTest {
 		System.out.println(userService.getUserMoneyService(u_id));
 	}
 	
+	public static void main(String[] args) {
+		String str = "-20:-20";
+		System.out.println(str.charAt(str.length()-3));
+	}
+	
 }

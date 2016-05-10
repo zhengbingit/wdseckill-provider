@@ -66,6 +66,6 @@ public interface IItemService {
 	 * @param u_id
 	 * @return
 	 */
-	public List<Item> listStoreItemsService(int u_id);
+	public Pages listStoreItemsService(int pageNum, int pageSize, int u_id);
 	
 }

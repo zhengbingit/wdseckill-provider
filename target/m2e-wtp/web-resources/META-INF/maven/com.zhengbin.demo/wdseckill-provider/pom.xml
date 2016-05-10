@@ -14,7 +14,7 @@
 		<!-- mybatis版本号 -->
 		<mybatis.version>3.3.0</mybatis.version>
 	</properties>
-	
+
 	<repositories>
 		<repository>
 			<id>sonatype-nexus-snapshots</id>
@@ -28,7 +28,7 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -146,6 +146,11 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.16</version>
 		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.1</version>
+		</dependency>
 		<!-- dubbo end -->
 
 		<!-- mybatis核心包 -->
@@ -165,6 +170,12 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.30</version>
+		</dependency>
+		<!-- redis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.7.3</version>
 		</dependency>
 		<!-- 导入dbcp的jar包，用来在applicationContext.xml中配置数据库 -->
 		<dependency>

@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wd.dao.cart.mapper">
-	
+	<cache eviction="LRU" type="com.wd.cache.RedisCache"/>
 	<!-- 增加购物车条目 -->
 	<insert id="addCart" parameterType="Cart">
 		insert into cart(u_id,i_id,c_count,c_time)

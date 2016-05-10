@@ -41,8 +41,12 @@ public class ItemServiceImpl implements IItemService {
 		return pages;
 	}
 
-	public List<Item> listStoreItemsService(int u_id) {
-		return itemDao.listStoreItems(u_id);
+	public Pages listStoreItemsService(int pageNum, int pageSize, int u_id) {
+		Page<?> page = PageHelper.startPage(pageNum, pageSize);
+		Pages pages = new Pages();
+		pages.setList(itemDao.listStoreItems(u_id));
+		pages.setPages(page.getPages());
+		return pages;
 	}
 	
 	public List<Item> listItemsNoLoginService() {
