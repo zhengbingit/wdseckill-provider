@@ -3,6 +3,7 @@ package com.wd.service.items;
 import java.util.List;
 
 import com.wd.entity.Item;
+import com.wd.entity.Pages;
 /**
  * 商品Service
  * @author zhengbinMac
@@ -52,7 +53,7 @@ public interface IItemService {
 	 * 获得商品列表（按时间倒排）
 	 * @return
 	 */
-	public List<Item> listItemsService();
+	public Pages listItemsService(int pageNum,int pageSize);
 	
 	/**
 	 * 获得商品列表（未登录）（按时间倒排）

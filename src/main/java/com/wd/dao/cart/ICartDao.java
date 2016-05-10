@@ -37,4 +37,11 @@ public interface ICartDao {
 	 * @return
 	 */
 	public Cart getCart(int c_id);
+	
+	/**
+	 * 获得用户的所有购物车条目的个数
+	 * @param u_id
+	 * @return
+	 */
+	public int getRow(int u_id);
 }

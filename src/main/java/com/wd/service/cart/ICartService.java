@@ -1,14 +1,20 @@
 package com.wd.service.cart;
 
-import java.util.List;
-
 import com.wd.entity.Cart;
+import com.wd.entity.Pages;
 /**
  * 购物车Service		
  * @author zhengbinMac
  *
  */
 public interface ICartService {
+	
+	/**
+	 * 获得某用户购物车的条目个数
+	 * @param u_id
+	 * @return
+	 */
+	public int getRow(int u_id);
 	
 	/**
 	 * 增加购物车条目
@@ -28,7 +34,7 @@ public interface ICartService {
 	 * 根据用户id获得该用户购物车的所有条目
 	 * @return ArrayList
 	 */
-	public List<Cart> listCart(int u_id);
+	public Pages listCart(int pageNum, int pageSize, int u_id);
 	
 	/**
 	 * 根据购物车id获得该购物车条目的详细信息

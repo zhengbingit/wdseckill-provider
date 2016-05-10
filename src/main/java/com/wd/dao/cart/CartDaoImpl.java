@@ -46,4 +46,8 @@ public class CartDaoImpl extends SqlSessionDaoSupport implements ICartDao {
 		return super.getSqlSession().selectOne("com.wd.dao.cart.mapper.getOneCart",c_id);
 	}
 
+	public int getRow(int u_id) {
+		return super.getSqlSession().selectOne("com.wd.dao.cart.mapper.getRow", u_id);
+	}
+
 }

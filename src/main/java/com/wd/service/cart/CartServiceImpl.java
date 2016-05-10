@@ -1,9 +1,10 @@
 package com.wd.service.cart;
 
-import java.util.List;
-
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.wd.dao.cart.ICartDao;
 import com.wd.entity.Cart;
+import com.wd.entity.Pages;
 
 public class CartServiceImpl implements ICartService {
 	private ICartDao cartDao;
@@ -18,8 +19,12 @@ public class CartServiceImpl implements ICartService {
 		return cartDao.addCart(cart) == true ? true : false;
 	}
 
-	public List<Cart> listCart(int u_id) {
-		return cartDao.listCart(u_id);
+	public Pages listCart(int pageNum, int pageSize, int u_id) {
+		Page<?> page = PageHelper.startPage(pageNum, pageSize);
+		Pages pages = new Pages();
+		pages.setList(cartDao.listCart(u_id));
+		pages.setPages(page.getPages());
+		return pages;
 	}
 
 	public Cart getCart(int c_id) {
@@ -28,6 +33,10 @@ public class CartServiceImpl implements ICartService {
 
 	public boolean deleteCart(int c_id) {
 		return cartDao.deleteCart(c_id);
+	}
+
+	public int getRow(int u_id) {
+		return cartDao.getRow(u_id);
 	}
 
 }

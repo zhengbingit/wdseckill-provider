@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.wd.entity.Orders;
+import com.wd.entity.Pages;
 import com.wd.service.order.IOrderService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,8 +31,14 @@ public class OrderTest {
 	
 	@Test
 	public void testListOrder() {
+		//测试分页
+//		PageHelper.startPage(1, 2);
 		int u_id = 2;
-		List<Orders> list_orders = orderService.listOrdersService(u_id);
+		int pageNum = 1;
+		int pageSize = 3;
+		Pages pages = orderService.listOrdersService(pageNum, pageSize, u_id);
+		List<Orders> list_orders = (List<Orders>)pages.getList();
+		System.out.println(pages.getPages());
 		for(Orders o : list_orders){
 			System.out.println(o);
 		}

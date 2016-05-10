@@ -2,8 +2,11 @@ package com.wd.service.items;
 
 import java.util.List;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.wd.dao.items.IItemDao;
 import com.wd.entity.Item;
+import com.wd.entity.Pages;
 
 public class ItemServiceImpl implements IItemService {
 	private IItemDao itemDao;
@@ -30,8 +33,12 @@ public class ItemServiceImpl implements IItemService {
 		return	itemDao.getItem(i_id);
 	}
 
-	public List<Item> listItemsService() {
-		return itemDao.listItems();
+	public Pages listItemsService(int pageNum, int pageSize) {
+		Page<?> page = PageHelper.startPage(pageNum, pageSize);
+		Pages pages = new Pages();
+		pages.setList(itemDao.listItems());
+		pages.setPages(page.getPages());
+		return pages;
 	}
 
 	public List<Item> listStoreItemsService(int u_id) {

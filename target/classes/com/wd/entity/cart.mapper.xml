@@ -10,6 +10,11 @@
 			values(#{u_id},#{i_id},#{c_count},#{c_time})
 	</insert>
 	
+	<!-- 获得某用户的购物车条目个数 -->
+	<select id="getRow" parameterType="int" resultType="int">
+		select COUNT(c_id) from cart where u_id=#{u_id}
+	</select>
+	
 	<!-- 删除购物车条目 -->
 	<delete id="deleteCart" parameterType="int">
 		delete from cart where c_id=#{c_id}

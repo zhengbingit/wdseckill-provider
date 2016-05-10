@@ -1,8 +1,7 @@
 package com.wd.service.order;
 
-import java.util.List;
-
 import com.wd.entity.Orders;
+import com.wd.entity.Pages;
 /**
  * 订单Service
  * @author zhengbinMac
@@ -22,6 +21,6 @@ public interface IOrderService {
 	 * @param orders
 	 * @return Orders
 	 */
-	public List<Orders> listOrdersService(int u_id);
+	public Pages listOrdersService(int pageNum, int pageSize, int u_id);
 	
 }

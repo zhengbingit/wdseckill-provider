@@ -12,12 +12,21 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.wd.entity.Cart;
+import com.wd.entity.Pages;
 import com.wd.service.cart.ICartService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath*:applicationContext-*.xml"})
 public class CartTest {
 	@Resource ICartService cartService;
+	
+	//获得某用户购物车的条目个数
+	@Test
+	public void testGetRow() {
+		int u_id = 0;
+		int row = cartService.getRow(u_id);
+		int pageSize = 40;
+	}
 	
 	@Test
 	public void testAddCart() {
@@ -30,9 +39,14 @@ public class CartTest {
 	
 	@Test
 	public void testListCart() {
+		//测试分页
+//		PageHelper.startPage(2, 2);
 		int u_id = 2;
-		List<Cart> list_cart = (ArrayList<Cart>)cartService.listCart(u_id);
-		for(Cart cart : list_cart) {
+		int pageNum = 2;
+		int pageSize = 2;
+		Pages pages = cartService.listCart(pageNum, pageSize, u_id);
+		System.out.println(pages.getPages()+"--");
+		for(Cart cart : (List<Cart>)pages.getList()) {
 			System.out.println(cart);
 		}
 	}
@@ -40,7 +54,10 @@ public class CartTest {
 	@Test
 	public void testTime() {
 		Date date = new Date();
-		List<Cart> list_cart = cartService.listCart(2);
+		int pageNum = 2;
+		int pageSize = 2;
+		Pages pages = cartService.listCart(pageNum, pageSize, 2);
+		List<Cart> list_cart = (List<Cart>)pages.getList();
         Date date2 = list_cart.get(0).getItem().getI_killtime();
         
         long temp = date2.getTime() - date.getTime();    //相差毫秒数
