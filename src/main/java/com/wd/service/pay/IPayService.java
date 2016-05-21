@@ -1,5 +1,7 @@
 package com.wd.service.pay;
 
+import com.wd.entity.Json;
+
 public interface IPayService {
 	
 	
@@ -19,7 +21,7 @@ public interface IPayService {
 	 * @param quantity
 	 * @return
 	 */
-	public int payOneService(int buyer_id, int item_id, int quantity);
+	public Json payOneService(int buyer_id, int item_id, int quantity);
 	
 	/**
 	 * 通过购物车购买

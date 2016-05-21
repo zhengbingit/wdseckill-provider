@@ -8,6 +8,7 @@ import com.wd.dao.orders.IOrderDao;
 import com.wd.dao.user.IUserDao;
 import com.wd.entity.Cart;
 import com.wd.entity.Item;
+import com.wd.entity.Json;
 import com.wd.entity.Orders;
 
 public class PayServiceImpl implements IPayService {
@@ -41,12 +42,17 @@ public class PayServiceImpl implements IPayService {
 	}
 
 
-	public int payOneService(int buyer_id, int item_id, int quantity) {
+	public Json payOneService(int buyer_id, int item_id, int quantity) {
+		Json result = new Json();
+		result.setBuyer_id(buyer_id);
+		result.setItem_id(item_id);
 		Item item = itemDao.getItem(item_id);
 		//判断库存
 		if(item.getI_stock() < quantity) {
 			//库存不足
-			return 10;
+			System.out.println("库存：" + item.getI_stock());
+			result.setResult_code(10);
+			return result;
 		}else {
 			itemDao.editItemSales(item.getI_id(), quantity);
 			itemDao.editItemStock(item.getI_id(), quantity);
@@ -55,16 +61,19 @@ public class PayServiceImpl implements IPayService {
 		if(item.getI_iskill() == 1){
 			if(!item.getI_killtime().before(new Date())) {
 				//商品销售时间未到
-				return 11;
+				result.setResult_code(11);
+				return result;
 			}
 		}
 		//更新余额
 		//总价
 		double i_money = item.getI_price() * quantity + item.getI_postage();
+		result.setTotal_price(i_money);
 		//判断用户余额
 		double u_money = userDao.getMoney(buyer_id);
 		if(u_money < i_money) {
-			return 1;
+			result.setResult_code(1);
+			return result;
 		}
 		//增加我的订单
 		Orders order = new Orders();
@@ -73,9 +82,11 @@ public class PayServiceImpl implements IPayService {
 		order.setO_time(new Date());
 		order.setU_id(buyer_id);
 		if(orderDao.addOrders(order) && userDao.updateMoney(buyer_id, i_money)) {
-			return 0;
+			result.setResult_code(0);
+			return result;
 		}else {
-			return 1;
+			result.setResult_code(1);
+			return result;
 		}
 	}
 

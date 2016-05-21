@@ -1,7 +1,5 @@
 package com.wd.service.items;
 
-import java.util.List;
-
 import com.wd.entity.Item;
 import com.wd.entity.Pages;
 /**
@@ -59,7 +57,7 @@ public interface IItemService {
 	 * 获得商品列表（未登录）（按时间倒排）
 	 * @return
 	 */
-	public List<Item> listItemsNoLoginService(); 
+	public Pages listItemsNoLoginService(int pageNum, int pageSize); 
 	
 	/**
 	 * 根据用户id获得该卖家店铺的商品列表

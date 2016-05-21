@@ -1,7 +1,5 @@
 package com.wd.service.items;
 
-import java.util.List;
-
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.wd.dao.items.IItemDao;
@@ -49,8 +47,12 @@ public class ItemServiceImpl implements IItemService {
 		return pages;
 	}
 	
-	public List<Item> listItemsNoLoginService() {
-		return itemDao.listItemsNoLogin();
+	public Pages listItemsNoLoginService(int pageNum, int pageSize) {
+		Page<?> page = PageHelper.startPage(pageNum, pageSize);
+		Pages pages = new Pages();
+		pages.setList(itemDao.listItemsNoLogin());
+		pages.setPages(page.getPages());
+		return pages;
 	}
 
 	public boolean editItemSalesService(int i_id, int sales) {

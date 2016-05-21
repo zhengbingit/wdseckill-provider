@@ -2,6 +2,7 @@ package com.wd.service.user;
 
 import com.wd.dao.user.IUserDao;
 import com.wd.entity.User;
+import com.wd.util.MD5Test;
 
 public class UserServiceImpl implements IUserService {
 	
@@ -14,13 +15,17 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	public boolean addUserService(User user) {
+		user.setU_pwd(MD5Test.getMD5(user.getU_pwd()));
 		return userDao.addUser(user) == true ? true : false;
 	}
 
+	@SuppressWarnings("unused")
 	public User loginService(User user) {
 		User u = userDao.getUser(user.getU_name());
 		if(u != null){
-			if(u.getU_pwd().equals(user.getU_pwd())) {
+			String u_pwd = u.getU_pwd();
+			String l_pwd = MD5Test.getMD5(user.getU_pwd());
+			if(u_pwd.equals(l_pwd)) {
 				return u;
 			}else {
 				return null;

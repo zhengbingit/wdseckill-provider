@@ -33,7 +33,7 @@
 	<dubbo:service interface="com.wd.service.order.IOrderService" ref="orderService"/>
 	<dubbo:service interface="com.wd.service.cart.ICartService" ref="cartService"/>
 	<dubbo:service interface="com.wd.service.items.IItemService" ref="itemService"/>
-	<dubbo:service interface="com.wd.service.pay.IPayService" ref="payService"/>
+	<dubbo:service interface="com.wd.service.pay.IPayService" ref="payService" timeout="1200000"/>
 	
 	<!-- 和本地bean一样实现服务 -->
 	<bean id="userService" class="com.wd.service.user.UserServiceImpl">

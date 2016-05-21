@@ -5,6 +5,7 @@
 <mapper namespace="com.wd.dao.item.mapper">
 	<cache eviction="LRU" type="com.wd.cache.RedisCache"/>
 	<!-- 根据i_id获得商品详情 -->
+	<!-- 主键索引 -->
 	<select id="getItem" parameterType="int" resultType="Item">
 		select * from item where i_id=#{i_id}
 	</select>

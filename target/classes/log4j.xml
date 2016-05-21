@@ -67,9 +67,9 @@
 	</logger>
 	
 	<root>
-		<!-- <level value="debug" /> -->
+		<level value="debug" />
 		<priority value="debug" />
-		<!-- <appender-ref ref="STDOUT" /> -->
+		<appender-ref ref="STDOUT" />
 		<appender-ref ref="console" />
 		<appender-ref ref="dailyRollingFile" />
 		<appender-ref ref="railyFile" />

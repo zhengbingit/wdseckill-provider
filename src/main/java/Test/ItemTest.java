@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -45,8 +46,22 @@ public class ItemTest {
 	
 	@Test
 	public void testAddItem() {
-		Item item = new Item();
-		itemService.addItemService(item);
+		for (int i = 0; i < 1000000; i++) {
+			Item item = new Item();
+			item.setI_name(new Date().getTime() + "");
+			item.setI_img1("logo.png");
+			item.setI_img2("logo.png");
+			item.setI_img3("logo.png");
+			item.setI_price(0.5);
+			item.setI_sales(0);
+			item.setI_stock(100);
+			item.setI_postage(0.5);
+			item.setI_iskill(0);
+			item.setI_time(new Date());
+			item.setU_id(4);
+			itemService.addItemService(item);
+		}
+		
 	}
 	
 	@Test
